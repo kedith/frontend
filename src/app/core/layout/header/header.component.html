@@ -1,0 +1,127 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onSidenavToggle()" fxShow="true" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div>
+    <a class="app-title" routerLink="/home-placeholder">{{ 'navbar.labels.title' | transloco }}</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs fxHide.sm>
+    <ul fxLayout fxLayoutGap="1rem" class="navigation-items">
+      <li>
+        <a *hasPermissions="[USER_PERMISSION]" mat-button routerLink="/users">{{
+          'navbar.labels.users' | transloco
+        }}</a>
+        <a *hasPermissions="[PERMISSION_MANAGEMENT]" mat-button routerLink="/permissions">{{
+          'navbar.labels.permissions' | transloco
+        }}</a>
+        <a
+          *hasPermissions="[CAMP_MANAGEMENT, CAMP_REPORT_RESTRICTED, CAMP_REPORTING]"
+          mat-button
+          routerLink="/campaigns"
+          >{{ 'navbar.labels.campaigns' | transloco }}</a
+        >
+        <a *hasPermissions="[BENEF_MANAGEMENT]" mat-button routerLink="/donors">{{
+          'navbar.labels.donors' | transloco
+        }}</a>
+        <a
+          *hasPermissions="[DONATION_REPORTING, CAMP_REPORT_RESTRICTED]"
+          mat-button
+          routerLink="/donations"
+          >{{ 'navbar.labels.donations' | transloco }}</a
+        >
+        <a
+          *ngIf="isUserLoggedIn()"
+          mat-button
+          (click)="logout()"
+          matTooltip="{{ 'navbar.labels.logout' | transloco }}"
+        >
+          <mat-icon class="navbar-icon">logout</mat-icon>
+        </a>
+        <a
+          *ngIf="!isUserLoggedIn() && (isPasswordChangeCurrentRoute$ | async) === false"
+          routerLink="/login"
+          mat-button
+          matTooltip="{{ 'navbar.labels.login' | transloco }}"
+        >
+          <mat-icon class="navbar-icon">login</mat-icon>
+        </a>
+        <a *ngIf="isEnglishSelected()" mat-button>
+          <img
+            ngSrc="../../../../assets/images/ro-flag.svg"
+            width="30"
+            height="30"
+            alt="Romanian"
+            matTooltip="{{ 'navbar.labels.language' | transloco }}"
+            (click)="onLanguageChange()"
+          />
+        </a>
+        <a *ngIf="!isEnglishSelected()" mat-button>
+          <img
+            ngSrc="../../../../assets/images/uk-flag.svg"
+            width="30"
+            height="30"
+            alt="English"
+            matTooltip="{{ 'navbar.labels.language' | transloco }}"
+            (click)="onLanguageChange()"
+          />
+        </a>
+        <a
+          *ngIf="!(lightTheme$ | async)"
+          mat-button
+          matTooltip="{{ 'navbar.labels.lightTheme' | transloco }}"
+          (click)="toggleTheme()"
+        >
+          <mat-icon class="navbar-icon">light_mode</mat-icon>
+        </a>
+        <a
+          *ngIf="lightTheme$ | async"
+          mat-button
+          matTooltip="{{ 'navbar.labels.darkTheme' | transloco }}"
+          (click)="toggleTheme()"
+        >
+          <mat-icon class="navbar-icon">dark_mode</mat-icon>
+        </a>
+        <a mat-button *ngIf="isUserLoggedIn()" [matMenuTriggerFor]="menu">
+        <img
+          ngSrc="../../../../assets/images/white-bell.svg"
+          priority
+          width="26"
+          height="26"
+          matTooltip="{{'navbar.labels.notification' | transloco}}"
+          alt="notifications"/>
+        </a>
+
+        <mat-menu #menu="matMenu" class="notification-menu">
+          <ng-template *ngIf="isUserLoggedIn()" transloco let-t>
+            <ul class="notification-menu-list">
+              <mat-card>
+              <li *ngFor="let notification of notificationList$ | async" class="notification-item">
+                <div>
+                  <p class = "notification-text">
+                    {{
+                    t('navbar.notifications.' + notification.notificationType, {
+                      username_actor: notification.actor.username,
+                      username_notifier: notification.notifier.username,
+                      notifier_first:notification.notifier.firstName,
+                      notifier_last:notification.notifier.lastName,
+                      notifier_mail:notification.notifier.email,
+                      notifier_mobile:notification.notifier.mobileNumber
+                    }) | transloco
+                    }}
+                  </p>
+                </div>
+                <div class="notification-datetime">
+                  <p>{{ notification.date | date : 'medium' }}</p>
+                </div>
+              </li>
+              </mat-card>
+            </ul>
+          </ng-template>
+        </mat-menu>
+        <a *ngIf="isUserLoggedIn()" class="user-navbar">
+          {{ 'navbar.labels.username' | transloco }}{{ currentUser$ | async }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,97 @@
+ul {
+  list-style: none;
+}
+main {
+  padding: 2rem;
+  height: calc(100% - 4rem - 64px);
+}
+
+a.app-title {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+}
+
+#welcome-username {
+  cursor: auto;
+}
+
+:host ::ng-deep a:has(img) span.mdc-button__label {
+  line-height: 14px !important;
+}
+
+.vertical-line {
+  border-left: 2px solid white;
+  height: 100%;
+}
+
+.user-navbar {
+  font-style: normal;
+  cursor: default;
+  font-size: 16px;
+}
+
+::ng-deep mat-icon {
+  margin-right: 0 !important;
+}
+
+.icon-button {
+  padding: 0;
+}
+.notification-menu {
+
+
+}
+.notification-menu-list {
+  list-style-type: none;
+  padding: 0;
+  max-width: 300px;
+  flex-wrap: wrap;
+  overflow-block: scroll;
+  overflow-x: hidden;
+  max-height: 300px;
+}
+.notification-text{
+  color: #cccccc;
+  display:flex;
+  flex-wrap: wrap;
+}
+.notification-item {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.notification-item:last-of-type{
+  border-bottom:none;
+}
+.notification-datetime {
+  color: #999;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: center;
+}
+.notification-menu-list::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
+
+.notification-menu-list::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Adjust as needed */
+}
+
+.notification-menu-list::-webkit-scrollbar-thumb {
+  background-color: #999; /* Adjust as needed */
+  border-radius: 4px; /* Rounded corners */
+}
+
+notification-menu-list::-webkit-scrollbar-thumb:hover {
+  background-color: #777; /* Adjust as needed */
+}

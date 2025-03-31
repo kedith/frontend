@@ -1,0 +1,38 @@
+<div *transloco="let translate">
+  <button
+    type="button"
+    mat-icon-button
+    class="table-header-filter-button"
+    [disableRipple]="true"
+    [matMenuTriggerFor]="filterMenu"
+  >
+    <i class="material-icons"> keyboard_arrow_down </i>
+  </button>
+
+  <mat-menu #filterMenu="matMenu" xPosition="before">
+    <div class="content-centered" (click)="$event.stopPropagation()">
+      <form>
+        <ng-container>
+          <mat-form-field (click)="$event.stopPropagation()">
+            <input
+              matInput
+              placeholder="{{ translate('donationList.text-filter') }}"
+              (input)="changeOperand($event)"
+            />
+          </mat-form-field>
+        </ng-container>
+      </form>
+      <div class="filter-buttons-container">
+        <button
+          class="confirm-button"
+          mat-flat-button
+          color="primary"
+          (click)="onValidation()"
+          [disabled]="isDisabled()"
+        >
+          <i class="material-icons"> search </i>
+        </button>
+      </div>
+    </div>
+  </mat-menu>
+</div>

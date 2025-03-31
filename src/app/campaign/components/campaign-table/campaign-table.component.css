@@ -1,0 +1,33 @@
+#title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.campaign-search-container {
+  flex: 0 1 400px;
+}
+
+:host ::ng-deep .campaign-search-container .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+.campaign-add-button,
+.export-button {
+  width: 197px;
+  min-width: 197px;
+}
+
+.table-cell-link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.export-button {
+  margin-left: 0.75rem;
+  background-color: rgba(0, 150, 136, 0.3);
+}
+
+.camp-report-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}

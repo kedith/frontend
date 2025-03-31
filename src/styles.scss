@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+@import 'assets/styles/tables';
+
+mat.$theme-ignore-duplication-warnings: true;
+
+$mat-theme-primary-color: mat.define-palette(mat.$teal-palette, 500);
+$mat-theme-accent: mat.define-palette(mat.$teal-palette, A200, A100, A400);
+
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $mat-theme-primary-color,
+      accent: $mat-theme-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $mat-theme-primary-color,
+      accent: $mat-theme-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($dark-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+a.table-cell-link:hover {
+  color: #009688;
+}
+
+a:not(.table-cell-link) {
+  color: white !important;
+}
+
+div.theme-container {
+  $dark-theme-table-row-color-even: rgb(66, 66, 66);
+  $dark-theme-table-row-color-odd: rgb(88, 88, 88);
+  $light-theme-table-row-color-even: rgb(255, 255, 255);
+  $light-theme-table-row-color-odd: rgb(233, 233, 233);
+
+  @include mat.all-component-colors($dark-theme);
+
+  tr:nth-of-type(even) {
+    background-color: $dark-theme-table-row-color-even !important;
+  }
+
+  tr:nth-of-type(odd) {
+    background-color: $dark-theme-table-row-color-odd !important;
+  }
+
+  &.light-theme {
+    @include mat.all-component-colors($light-theme);
+
+    tr:nth-of-type(even) {
+      background-color: $light-theme-table-row-color-even !important;
+    }
+
+    tr:nth-of-type(odd) {
+      background-color: $light-theme-table-row-color-odd !important;
+    }
+  }
+}
+.light-theme {
+  @include mat.all-component-colors($light-theme);
+}
+
+app-login {
+  display: block;
+  height: 100%;
+}
+
+app-home-placeholder {
+  display: block;
+  height: 100%;
+}

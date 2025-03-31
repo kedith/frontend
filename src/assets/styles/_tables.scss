@@ -1,0 +1,23 @@
+div.table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-responsive {
+  width: 100%;
+  flex: 1;
+  overflow-x: auto;
+}
+
+mat-paginator {
+  z-index: 10;
+}

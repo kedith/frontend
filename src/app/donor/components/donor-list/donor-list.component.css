@@ -1,0 +1,28 @@
+#title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.empty-table {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.empty-table td {
+  padding: 1rem;
+}
+
+.back-button {
+  width: 197px;
+  min-width: 197px;
+}
+
+.add-button,
+.export-button {
+  width: 197px;
+  min-width: 197px;
+}
+
+.export-button {
+  background-color: rgba(0, 150, 136, 0.3);
+}

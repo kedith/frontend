@@ -1,0 +1,58 @@
+.formButton {
+  width: 100%;
+  margin-top: 0.9rem;
+}
+
+.warningMessage {
+  font-size: 12px;
+}
+
+.register-campaign-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 14vh;
+}
+
+.register-campaign-form {
+  display: grid;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 0.6rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.register-campaign-form > div {
+  grid-column: span 1;
+}
+
+.register-campaign-form .example-button-container {
+  grid-column: span 2;
+}
+
+.register-campaign-form * {
+  width: 100%;
+}
+
+.loading-modal-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+.dialog-header span {
+  color: var(--mdc-dialog-subhead-color, rgba(0, 0, 0, 0.87));
+  font-size: 1.125rem;
+  padding: 0.75rem;
+}
+.dialog-header button {
+  color: var(--mdc-dialog-subhead-color, rgba(0, 0, 0, 0.87));
+}

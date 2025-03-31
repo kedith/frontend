@@ -1,0 +1,15 @@
+.permissions-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.permissions-form > * {
+  width: 70%;
+}
+
+div:has(mat-card) {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,19 @@
+#title {
+  text-align: center;
+  font-weight: bold;
+}
+
+mat-paginator {
+  z-index: 10;
+}
+
+::ng-deep mat-chip {
+  background-color: rgba(0, 150, 136, 0.7) !important;
+}
+
+.mat-chip-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}

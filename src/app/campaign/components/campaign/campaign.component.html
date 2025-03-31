@@ -1,0 +1,49 @@
+<div class="dialog-header">
+  <span *ngIf="data === null">{{ translate('campaign.Add') }}</span>
+  <span *ngIf="data !== null">{{ translate('campaign.Edit') }}</span>
+  <button mat-icon-button aria-label="Close" (click)="onDialogClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <div class="register-campaign-container">
+    <form class="register-campaign-form" [formGroup]="campaignForm">
+      <div>
+        <mat-form-field>
+          <mat-label for="name">{{ 'campaign.Name' | transloco }}</mat-label>
+          <input matInput id="name" type="text" formControlName="name" />
+          <mat-error *ngIf="campaignForm.get('name')!.invalid">{{
+            getErrorMessageName()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label for="purpose">{{ 'campaign.Purpose' | transloco }}</mat-label>
+          <input matInput id="purpose" type="text" formControlName="purpose" />
+          <mat-error *ngIf="campaignForm.get('purpose')!.invalid">{{
+            getErrorMessagePurpose()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="loading-modal-footer">
+    <button
+      class="formButton"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!campaignForm.valid || (isLoading$ | async) === true"
+      (click)="onSave()"
+    >
+      {{ 'campaign.Save' | transloco }}
+    </button>
+    <mat-spinner *ngIf="isLoading$ | async" diameter="32"></mat-spinner>
+  </div>
+</mat-dialog-actions>
+<div></div>

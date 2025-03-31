@@ -1,0 +1,313 @@
+{
+  "navbar": {
+    "labels": {
+      "title": "Donation Manager",
+      "users": "Users",
+      "permissions": "Permissions",
+      "login": "Login",
+      "logout": "Logout",
+      "donations": "Donations",
+      "campaigns": "Campaigns",
+      "donors": "Donors",
+      "language": "Romanian",
+      "close": "Close",
+      "username": "Hello, ",
+      "darkTheme": "Dark Theme",
+      "lightTheme": "Light Theme",
+      "notification": "Notificaitons"
+    },
+    "notifications": {
+      "WELCOME_NEW_USER": "Welcome {{notifier_first}} {{notifier_last}}. You have the following saved data:\nUsername: {{username_notifier}}\nEmail: {{notifier_mail}}\nMobile Number: {{notifier_mobile}}",
+      "USER_DEACTIVATED": "User: {{username_notifier}} has failed his password 5 times and deactivated his account. His saved data: \nEmail: {{notifier_mail}}\nMobile Number: {{notifier_mobile}} ",
+      "USER_DELETED": "Username: {{username_notifier}} has been deactivated. His saved data: \nEmail: {{notifier_mail}}\nMobile Number: {{notifier_mobile}} ",
+      "USER_UPDATED": "User {{username_actor}} has updated your informations. Current info: Email:{{notifier_mail}}\nMobile:{{notifier_mobile}}",
+      "DONATION_APPROVED":"Donation approved. The sum of your donation is {{extra_info}}"
+    }
+  },
+  "userlist": {
+    "title": "List of Users",
+    "addUserButton": "Add user",
+    "filter": "Filter",
+    "table": {
+      "header": {
+        "edit": "Edit",
+        "id": "ID",
+        "username": "Username",
+        "email": "Email",
+        "roles": "Roles",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "mobileNumber": "Mobile number",
+        "activated": "Activated/Deactivated",
+        "actions": "Actions"
+      },
+      "button": {
+        "activated": "Activated",
+        "deactivated": "Deactivated"
+      }
+    },
+    "editForm": "Edit user",
+    "export": "Export",
+    "add": "Add campaign"
+  },
+  "roles": {
+    "ADM": "Administrator",
+    "MGN": "Manager",
+    "CEN": "Censor",
+    "REP": "Reporter"
+  },
+  "info": {
+    "USER_DEACTIVATED": "User deactivated",
+    "USER_DELETED": "User deleted",
+    "USER_UPDATED": "User updated"
+  },
+  "success": {
+    "ADDED_USER": "The user has been created successfully",
+    "DELETED_USER": "The user has been deleted successfully",
+    "UPDATED_USER": "The user has been updated successfully",
+    "ADDED_CAMPAIGN": "The campaign has been created successfully",
+    "DELETED_CAMPAIGN": "The campaign has been deleted successfully",
+    "UPDATED_CAMPAIGN": "The campaign has been updated successfully",
+    "ADDED_DONATION": "The donation has been created successfully",
+    "UPDATED_DONATION": "The donation has been updated successfully",
+    "SAVE_PERMISSION": "The Permissions have been saved",
+    "ADDED_DONOR": "The donor has been created successfully",
+    "DELETED_DONOR": "The donor has been deleted successfully",
+    "UPDATED_DONOR": "The donor has been updated successfully"
+  },
+  "errors": {
+    "donor": {
+      "notFoundById": "Couldn't find donor by id",
+      "createError": "Couldn't create donor",
+      "updateError": "Couldn't update donor",
+      "deleteError": "Couln't delete donor"
+    },
+    "user": {
+      "notFoundById": "Couldn't find user by id",
+      "createError": "Couldn't create user",
+      "updateError": "Couldn't update user",
+      "deleteError": "Couln't delete user",
+      "notFoundByUsername": "Couldn't find user by username",
+      "changePasswordError": "Couldn't update password"
+    },
+    "auth": {
+      "authError": "Couldn't authentificate",
+      "cookieCheckError": "Error checking cookie"
+    },
+    "Token": {
+      "refreshToken": "Session expired"
+    },
+    "ErrorCode": {
+      "INVALID_CREDENTIALS": "Wrong password",
+      "INVALID_PASSWORD": "Invalid password",
+      "INVALID_USER": "User does not exist",
+      "INVALID_DONOR": "The donor has invalid fields",
+      "DONOR_NOT_FOUND": "The donor does not exist",
+      "USER_NOT_FOUND": "The user does not exist",
+      "MISSING_COOKIE": "Oh no! The cookie is missing. Maybe the cookie monster ate it :(",
+      "EXPIRED_REFRESHTOKEN": "Refresh token is expired",
+      "UNAUTHORIZED_USER": "The user is unauthorized to perform this operation!",
+      "PAYED_CAMPAIGN": "This campaign has payed donations. Cannot be deleted.",
+      "CONCURRENCY_ERROR": "Another operation on this entity has been made, please try again!",
+      "CAMPAIGN_NOT_FOUND": "The requested campaign was not found!",
+      "INVALID_CAMPAIGN": "The campaign has invalid fields!",
+      "INVALID_NAME": "The campaign's name already exists",
+      "USER_NOT_AUTHORIZED": "You are not authorized to do that",
+      "USER_DEACTIVATED": "Your account has been blocked",
+      "INVALID_DONATION": "The donation has invalid fields!",
+      "DEACTIVATED_USER": "The user is deactivated"
+    },
+    "Generic": {
+      "404": "Not found",
+      "400": "Bad request",
+      "401": "Unauthorized",
+      "403": "Forbidden",
+      "Random": "An error occured"
+    },
+    "campaign": {
+      "name": {
+        "required": "Name is required!",
+        "pattern": "Name must start with capital letter and must not contain any special characters!"
+      },
+      "purpose": {
+        "required": "Description is required!",
+        "pattern": "Description must start with capital letter and it can contain special characters!"
+      }
+    }
+  },
+  "succesful": {
+    "LogIn": "Successfully logged in",
+    "AddedUser": "User added successfully",
+    "AddedDonor": "Donor added successfully"
+  },
+  "permissions": {
+    "permissionForm": "Change permissions",
+    "PERMISSION_MANAGEMENT": "Permission management",
+    "USER_MANAGEMENT": "User Management",
+    "CAMP_MANAGEMENT": "Censor",
+    "BENEF_MANAGEMENT": "Reporter",
+    "DONATION_MANAGEMENT": "Donation management",
+    "DONATION_APPROVE": "Donation approve",
+    "DONATION_REPORTING": "Campaign reporting",
+    "CAMP_REPORTING": "Campaign reporting",
+    "CAMP_IMPORT": "Campaign import",
+    "CAMP_REPORT_RESTRICTED": "Campaign report restricted",
+    "USER_NOT_AUTHORIZED": "You are not authorized to do that"
+  },
+  "registry": {
+    "form": {
+      "firstname": "First name",
+      "lastname": "Last name",
+      "phonenumber": "Phone number",
+      "email": "Email",
+      "roles": "Roles",
+      "campaigns": "Campaigns"
+    },
+    "button": {
+      "save": "Save"
+    },
+    "errors": {
+      "firstNameRequired": "First name is required",
+      "firstNameWrong": "Only letters; minimum 2 letters",
+      "lastNameRequired": "Last name is required",
+      "lastNameWrong": "Only letters; minimum 2 letters",
+      "mobileNumberWrong": "Invalid number format",
+      "mailRequired": "Email is required",
+      "mailWrong": "Invalid email format",
+      "roleRequired": "At least one role is required",
+      "campaignRequired": "At least one campaign is required"
+    }
+  },
+  "login": {
+    "title": "Log in",
+    "form": {
+      "username": "Username",
+      "password": "Password"
+    },
+    "button": "Login",
+    "errors": {
+      "usernameRequired": "Username is required",
+      "passwordRequired": "Password is required"
+    }
+  },
+  "password-change": {
+    "title": "Password Change",
+    "prompt": "Please change your password",
+    "form": {
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password"
+    },
+    "button": {
+      "save": "Save"
+    },
+    "strongPasswordHint": "A strong password should be at least 8 characters long and include a symbol (!@#$%^&), at least one digit (0-9), one uppercase letter (A-Z) and one lowercase letter (a-z).",
+    "error": {
+      "inputRequired": "* Input fields cannot be empty.",
+      "passwordPattern": "* Password not strong enough.",
+      "passwordMatch": "* Passwords must be the same."
+    }
+  },
+  "campaign": {
+    "List of Campaigns": "List of campaigns",
+    "Add": "Add",
+    "Edit": "Edit",
+    "ID": "ID",
+    "Name": "Name",
+    "Purpose": "Purpose",
+    "Save": "Save",
+    "Invalid name": "Invalid name. Please enter a new name.",
+    "Delete": "Delete",
+    "Actions": "Actions"
+  },
+  "donorlist": {
+    "title": "List of Donors",
+    "table": {
+      "header": {
+        "id": "ID",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "additionalname": "Additional name",
+        "maidenname": "Maiden name",
+        "actions": "Actions"
+      },
+      "actions": {
+        "edit": "Edit",
+        "delete": "Delete"
+      }
+    },
+    "backbutton": "Back",
+    "registerbutton": "Add donor",
+    "export": "Export"
+  },
+  "donorregister": {
+    "form": {
+      "firstname": "First name",
+      "lastname": "Last name",
+      "additionalname": "Additional name",
+      "maidenname": "Maiden name"
+    },
+    "button": {
+      "save": "Save"
+    },
+    "title": {
+      "add": "Add donor",
+      "edit": "Edit donor"
+    }
+  },
+  "donoredit": {
+    "form": {
+      "title": "Edit donor",
+      "firstname": "First name",
+      "lastname": "Last name",
+      "additionalname": "Additional name",
+      "maidenname": "Maiden name"
+    },
+    "button": {
+      "save": "Save"
+    }
+  },
+  "donationList": {
+    "title": "Donations",
+    "addDonationButton": "Add Donation",
+    "text-filter": "Filter text",
+    "number-filter": "Equals",
+    "date-filter": "Choose date",
+    "reset-filters": "Reset Filters",
+    "table": {
+      "header": {
+        "id": "ID",
+        "amount": "Amount",
+        "currency": "Currency",
+        "campaign": "Campaign",
+        "createdBy": "Created By",
+        "createdDate": "Date Created",
+        "benefactor": "Benefactor",
+        "approvedBy": "Approved By",
+        "approvedDate": "Date Approved",
+        "notes": "Notes",
+        "approved": "Approved",
+        "actions": "Actions"
+      },
+      "actions": {
+        "approve": "Approve",
+        "edit": "Edit",
+        "delete": "Delete"
+      }
+    },
+    "yes": "Yes",
+    "no": "No",
+    "editForm": "Edit donation",
+    "export": "Export"
+  },
+  "registerdonation": {
+    "button": {
+      "save": "Save"
+    },
+    "errors": {
+      "currencyRequired": "Currency is required",
+      "amountRequired": "Number greater than 0 is required",
+      "campaignRequired": "Campaign is required",
+      "benefactorRequired": "Benefactor is required"
+    }
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "navbar": {
+    "labels": {
+      "title": "Manager de donații",
+      "users": "Utilizatori",
+      "permissions": "Permisiuni",
+      "login": "Logare",
+      "logout": "Delogare",
+      "donations": "Donații",
+      "campaigns": "Campanii",
+      "donors": "Donatori",
+      "language": "Engleză",
+      "close": "Închide",
+      "username": "Salut, ",
+      "darkTheme": "Tema intunecata",
+      "lightTheme": "Tema luminata",
+      "notification": "Notificari"
+    },
+    "notifications": {
+      "WELCOME_NEW_USER": "Bine ați venit {{notifier_first}} {{notifier_last}}. Aveți următoarele date salvate:\nUsername: {{username_notifier}}\nEmail: {{notifier_mail}}\nNr. telefon: {{notifier_mobile}}",
+      "USER_DEACTIVATED": "Utilizatorul: {{username_notifier}} și-a greșit parola de 5 ori și contul său a fost dezactivat. Datele utilizatorului sunt: \nEmail: {{notifier_mail}}\nNr. telefon: {{notifier_mobile}} ",
+      "USER_DELETED": "Utilizatorul: {{username_notifier}} a fost deactivat. Datele utilizatorului sunt: \nEmail: {{notifier_mail}}\nNr. telefon: {{notifier_mobile}} ",
+      "USER_UPDATED": "Utilizatorul {{username_actor}} v-a actualizat datele. Datele curente ale utilizatorului sunt: Email:{{notifier_mail}}\nNr. telefon:{{notifier_mobile}}",
+      "DONATION_APPROVED":"Donation approved. The sum of your donation is {{extra_info}}"
+    }
+  },
+  "success": {
+    "ADDED_USER": "User-ul a fost adăugat cu succes",
+    "DELETED_USER": "User-ul a fost șters cu succes",
+    "UPDATED_USER": "User-ul a fost actualizat cu succes",
+    "ADDED_CAMPAIGN": "Campania a fost adăugată cu succes",
+    "DELETED_CAMPAIGN": "Campania a fost ștersă cu succes",
+    "UPDATED_CAMPAIGN": "Campania a fost actualizată cu succes",
+    "ADDED_DONATION": "Donația a fost adăugată cu succes",
+    "UPDATED_DONATION": "Donația a fost actualizată cu succes",
+    "SAVE_PERMISSION": "Permisiunile au fost salvate",
+    "ADDED_DONOR": "Donatorul a fost adăugat cu succes",
+    "DELETED_DONOR": "Donatorul a fost șters cu succes",
+    "UPDATED_DONOR": "Donatorul a fost actualizat cu succes"
+  },
+  "errors": {
+    "donor": {
+      "notFoundById": "Nu s-a găsit donatorul cu acest id",
+      "createError": "Nu s-a putut crea acest donator",
+      "updateError": "Nu s-a putut actualiza donatorul",
+      "deleteError": "Nu s-a ptut șterge donatorul"
+    },
+    "user": {
+      "notFoundById": "Nu s-a găsit utilizatorul cu acest id",
+      "createError": "Nu s-a putut crea utilizatorul",
+      "updateError": "Nu s-a putut actualiza utilizatorul",
+      "deleteError": "Nu s-a putut șterge utilizatorul",
+      "notFoundByUsername": "Nu s-a găsit utilizatorul cu acest nume",
+      "changePasswordError": "Nu s-a putut actualiza parola"
+    },
+    "auth": {
+      "authError": "Nu s-a putut autentifica",
+      "cookieCheckError": "Eroare la prăjituri"
+    },
+    "Token": {
+      "refreshToken": "Sesiunea a expirat"
+    },
+    "ErrorCode": {
+      "INVALID_CREDENTIALS": "Parolă greșită",
+      "INVALID_PASSWORD": "Parolă greșită",
+      "INVALID_USER": "Utilizatorul nu există",
+      "INVALID_DONOR": "Câmpurile sunt greșite",
+      "DONOR_NOT_FOUND": "Donatorul nu există",
+      "USER_NOT_FOUND": "Utilizatorul nu există",
+      "MISSING_COOKIE": "Lipsește prăjiturica",
+      "EXPIRED_REFRESHTOKEN": "Sesiunea a expirat",
+      "UNAUTHORIZED_USER": "Utilizatorul nu este autorizat pentru această acțiune",
+      "PAYED_CAMPAIGN": "Campania nu poate fi ștersă. Are donatii plătite.",
+      "CONCURRENCY_ERROR": "A fost făcută o altă operație. Vă rugăm reîncercați.",
+      "CAMPAIGN_NOT_FOUND": "Campania nu a fost găsită",
+      "INVALID_CAMPAIGN": "Campanie invalidă",
+      "USER_NOT_AUTHORIZED": "Nu sunteți autorizați pentru această acțiune",
+      "USER_DEACTIVATED": "Contul a fost blocat",
+      "INVALID_DONATION": "Donație invalidă!",
+      "INVALID_NAME":"Numele acestei campanii exista deja",
+      "DEACTIVATED_USER": "Utilizatorul este deactivat"
+    },
+    "Generic": {
+      "404": "Negăsit",
+      "400": "Cerere greșită",
+      "401": "Neautorizat",
+      "403": "Interzis",
+      "Random": "A apărut o eroare"
+    },
+    "campaign": {
+      "name": {
+        "required": "Numele este obligatoriu!",
+        "pattern": "Numele începe cu o majusculă și nu poate conține caractere speciale!"
+      },
+      "purpose": {
+        "required": "Descrierea este obligatoriu!",
+        "pattern": "Descrierea începe cu o majusculă și poate conține caractere speciale!"
+      }
+    }
+  },
+  "succesful": {
+    "LogIn": "Logare cu succes",
+    "AddedUser": "Utilizatorul a fost adăugat cu succes",
+    "AddedDonor": "Donatorul a fost adăugat cu succes"
+  },
+  "userlist": {
+    "title": "Lista de utilizatori",
+    "filter": "Filtrează",
+    "addUserButton": "Adăugare utilizator",
+    "table": {
+      "header": {
+        "edit": "Editează",
+        "id": "ID",
+        "username": "Nume de utilizator",
+        "email": "Email",
+        "roles": "Roluri",
+        "firstName": "Prenume",
+        "lastName": "Nume de familie",
+        "mobileNumber": "Număr de telefon",
+        "activated": "Activat/Deactivat",
+        "actions": "Acțiuni"
+      },
+      "button": {
+        "activated": "Activat",
+        "deactivated": "Deactivat"
+      }
+    },
+    "editForm": "Editează utilizator",
+    "export": "Exportare",
+    "add": "Adăugare campanie"
+  },
+  "roles": {
+    "ADM": "Administrator",
+    "MGN": "Manager",
+    "CEN": "Cenzor",
+    "REP": "Reporter"
+  },
+  "info": {
+    "USER_DEACTIVATED": "Utilizator deactivat",
+    "USER_DELETED": "Utilizator sters",
+    "USER_UPDATED": "Utilizator editat"
+  },
+  "permissions": {
+    "permissionForm": "Schimbă permisiunile",
+    "PERMISSION_MANAGEMENT": "Management de permisiuni",
+    "USER_MANAGEMENT": "Management de utilizatori",
+    "CAMP_MANAGEMENT": "Managementul campaniei",
+    "BENEF_MANAGEMENT": "Manegementul beneficiarului",
+    "DONATION_MANAGEMENT": "Managementul donației",
+    "DONATION_APPROVE": "Aprobarea donației",
+    "DONATION_REPORTING": "Raportarea donației",
+    "CAMP_REPORTING": "Raportarea campaniei",
+    "CAMP_IMPORT": "Importarea campaniei",
+    "CAMP_REPORT_RESTRICTED": "Raport de restricționare a campaniei",
+    "USER_NOT_AUTHORIZED": "Nu sunteți autorizați pentru această acțiune"
+  },
+  "registry": {
+    "form": {
+      "firstname": "Prenume",
+      "lastname": "Nume de familie",
+      "phonenumber": "Număr de telefon",
+      "email": "Email",
+      "roles": "Roluri",
+      "campaigns": "Campanii"
+    },
+    "button": {
+      "save": "Salvează"
+    },
+    "errors": {
+      "firstNameRequired": "Prenumele este obligatoriu",
+      "firstNameWrong": "Doar litere; minimum 2 litere",
+      "lastNameRequired": "Numele este obligatoriu",
+      "lastNameWrong": "Doar litere; minimum 2 litere",
+      "mobileNumberWrong": "Număr de telefon invalid",
+      "mailRequired": "Email-ul este obligatoriu",
+      "mailWrong": "Email-ul este invalid",
+      "roleRequired": "Cel puțin un rol este obligatoriu",
+      "campaignRequired": "Cel puțin o campanie este obligatoriu"
+    }
+  },
+  "login": {
+    "title": "Conectează-te",
+    "form": {
+      "username": "Nume de utilizator",
+      "password": "Parolă"
+    },
+    "button": "Logare",
+    "errors": {
+      "usernameRequired": "Nume de utilizator este obligatoriu",
+      "passwordRequired": "Parola este obligatoriu"
+    }
+  },
+  "password-change": {
+    "title": "Schimbare Parolă",
+    "prompt": "Vă rugăm, schimbați parola.",
+    "form": {
+      "newPassword": "Parola Nouă",
+      "confirmPassword": "Confirmare Parolă"
+    },
+    "button": {
+      "save": "Salvează"
+    },
+    "strongPasswordHint": "O parolă sigură trebuie să conțină cel puțin 8 caractere, inclusiv un simbol (!@#$%^&), un număr (0-9), o literă mare (A-Z) și o literă mică (a-z).",
+    "error": {
+      "inputRequired": "* Completarea e necesară pentru a continua.",
+      "passwordPattern": "* Parola nu e suficient de puternică.",
+      "passwordMatch": "* Parolele trebuie să se potrivească."
+    }
+  },
+  "donorlist": {
+    "title": "Lista donatorilor",
+    "table": {
+      "header": {
+        "id": "ID",
+        "firstname": "Prenume",
+        "lastname": "Nume de familie",
+        "additionalname": "Nume adiționale",
+        "maidenname": "Numele de fată",
+        "actions": "Acțiuni"
+      },
+      "actions": {
+        "edit": "Editare",
+        "delete": "Ștergere"
+      }
+    },
+    "backbutton": "Înapoi",
+    "registerbutton": "Înregistrare donator",
+    "export": "Exportare"
+  },
+  "donorregister": {
+    "form": {
+      "firstname": "Prenume",
+      "lastname": "Nume de familie",
+      "additionalname": "Nume adițională",
+      "maidenname": "Numele de fată"
+    },
+    "button": {
+      "save": "Salvare"
+    },
+    "title": {
+      "add": "Adăugare donator",
+      "edit": "Editare donator"
+    }
+  },
+  "donoredit": {
+    "form": {
+      "title": "Editare donator",
+      "firstname": "Prenume",
+      "lastname": "Nume de familie",
+      "additionalname": "Nume adițională",
+      "maidenname": "Numele de fată"
+    },
+    "button": {
+      "save": "Salvare"
+    }
+  },
+  "donationList": {
+    "title": "Donații",
+    "addDonationButton": "Adăugare Donație",
+    "text-filter": "Filtrare text",
+    "number-filter": "Filtrare număr",
+    "date-filter": "Alege data",
+    "reset-filters": "Resetare Filtre",
+    "table": {
+      "header": {
+        "id": "ID",
+        "amount": "Sumă",
+        "currency": "Valută",
+        "campaign": "Campanie",
+        "createdBy": "Creat De",
+        "createdDate": "Data Creării",
+        "benefactor": "Donator",
+        "approvedBy": "Aprobat De",
+        "approvedDate": "Data Aprobării",
+        "notes": "Note",
+        "approved": "Aprobat",
+        "actions": "Acțiuni"
+      },
+      "actions": {
+        "approve": "Aprobă",
+        "edit": "Editare",
+        "delete": "Ștergere"
+      }
+    },
+    "yes": "Da",
+    "no": "Nu",
+    "editForm": "Editare Donație",
+    "export": "Exportare"
+  },
+  "registerdonation": {
+    "button": {
+      "save": "Salvează"
+    },
+    "errors": {
+      "currencyRequired": "Valuta este obligatoriu.",
+      "amountRequired": "Sumă mai mare de 0 este obligatoriu.",
+      "campaignRequired": "Campania este obligatoriu.",
+      "benefactorRequired": "Donatorul este obligatoriu."
+    }
+  },
+  "campaign": {
+    "List of Campaigns": "Lista campaniilor",
+    "Add": "Adaugare",
+    "Edit": "Editare",
+    "ID": "ID",
+    "Name": "Nume",
+    "Purpose": "Scop",
+    "Save": "Salvare",
+    "Invalid name": "Nume invalid. Vă rugăm introduceți un nume nou.",
+    "Delete":"Ștergere",
+    "Actions": "Actiuni"
+  }
+}

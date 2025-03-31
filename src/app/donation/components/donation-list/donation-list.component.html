@@ -1,0 +1,274 @@
+<div *transloco="let translate" class="table-container">
+  <h1 id="title">{{ translate('donationList.title') }}</h1>
+
+  <div class="button-container">
+    <div class="filter-export-button">
+      <button class="reset-filter-button" mat-raised-button (click)="clearAll()">
+        {{ translate('donationList.reset-filters') }}
+      </button>
+      <button
+        *hasPermissions="[DONATION_REPORTING]"
+        class="export-button"
+        mat-raised-button
+        (click)="exportToCSV()"
+      >
+        <mat-icon aria-hidden="false" fontIcon="import_export"></mat-icon>
+        {{ translate('donationList.export') }}
+      </button>
+    </div>
+    <button
+      class="add-button"
+      mat-raised-button
+      *hasPermissions="[DONATION_MANAGEMENT]"
+      color="primary"
+      (click)="onDonationAdd()"
+    >
+      <mat-icon aria-hidden="false" fontIcon="add"></mat-icon>
+      {{ translate('donationList.addDonationButton') }}
+    </button>
+  </div>
+
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="actions" sticky>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.actions') }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="donorlist-actions-container">
+            <button
+              mat-icon-button
+              matTooltip="{{ translate('donationList.table.actions.edit') }}"
+              *hasPermissions="[DONATION_MANAGEMENT]"
+              (click)="onDonationEditClick(element)"
+              [disabled]="element.approved"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              class="approve-button"
+              mat-icon-button
+              *hasPermissions="[DONATION_APPROVE]"
+              [disabled]="element.approved || currentUser === element.createdBy"
+              matTooltip="{{ 'donationList.table.actions.approve' | transloco }}"
+              (click)="onApprove(element)"
+            >
+              <mat-icon>done</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              matTooltip="{{ translate('donationList.table.actions.delete') }}"
+              *hasPermissions="[DONATION_MANAGEMENT]"
+              (click)="onDonationDeleteClick(element)"
+              [disabled]="element.approved"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.id') }}
+          <div class="table-header-filter">
+            <app-number-filter
+              [columnName]="columns.Id"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-number-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.amount') }}
+          <div class="table-header-filter">
+            <app-number-filter
+              [columnName]="columns.Amount"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-number-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.currency') }}
+          <div class="table-header-filter">
+            <app-text-filter
+              [columnName]="columns.Currency"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-text-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.currency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="campaign">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.campaign') }}
+          <div class="table-header-filter">
+            <app-text-filter
+              [columnName]="columns.Campaign"
+              (predicateEmitter)="applyCampaignFilter($event)"
+            ></app-text-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.campaign?.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdBy">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.createdBy') }}
+          <div class="table-header-filter">
+            <app-text-filter
+              [columnName]="columns.CreatedBy"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-text-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.createdBy }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.createdDate') }}
+          <div class="table-header-filter">
+            <app-date-filter
+              [columnName]="columns.CreatedDate"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-date-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.createdDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="benefactor">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.benefactor') }}
+          <div class="table-header-filter">
+            <app-text-filter
+              [columnName]="columns.Benefactor"
+              (predicateEmitter)="applyDonorFilter($event)"
+            ></app-text-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            element.benefactor
+              ? element.benefactor.firstName + ' ' + element.benefactor.lastName
+              : 'Unknown'
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="approvedBy">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.approvedBy') }}
+          <div class="table-header-filter">
+            <app-text-filter
+              [columnName]="columns.ApprovedBy"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-text-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.approvedBy ?? '' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="approvedDate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.approvedDate') }}
+          <div class="table-header-filter">
+            <app-date-filter
+              [columnName]="columns.ApprovedDate"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-date-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.approvedDate ?? '' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.notes') }}
+          <div class="table-header-filter">
+            <app-text-filter
+              [columnName]="columns.Notes"
+              (predicateEmitter)="applyFilter($event)"
+            ></app-text-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.notes ?? '' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="approved">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('donationList.table.header.approved') }}
+          <div class="table-header-filter">
+            <app-approved-filter
+              [columnName]="columns.Approved"
+              (predicateEmitter)="applyApprovedFilter($event)"
+            ></app-approved-filter>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.approved ? translate('donationList.yes') : translate('donationList.no') }}
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="
+          [
+            'actions',
+            'id',
+            'campaign',
+            'amount',
+            'currency',
+            'benefactor',
+            'createdBy',
+            'createdDate',
+            'approved',
+            'approvedBy',
+            'approvedDate',
+            'notes'
+          ];
+          sticky: true
+        "
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="
+          let row;
+          columns: [
+            'actions',
+            'id',
+            'campaign',
+            'amount',
+            'currency',
+            'benefactor',
+            'createdBy',
+            'createdDate',
+            'approved',
+            'approvedBy',
+            'approvedDate',
+            'notes'
+          ]
+        "
+      ></tr>
+    </table>
+    <mat-paginator
+      style="position: sticky; bottom: 0"
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

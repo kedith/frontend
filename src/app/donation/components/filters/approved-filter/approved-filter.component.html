@@ -1,0 +1,34 @@
+<div *transloco="let translate">
+  <button
+    type="button"
+    mat-icon-button
+    class="table-header-filter-button"
+    [disableRipple]="true"
+    [matMenuTriggerFor]="filterMenu"
+  >
+    <i class="material-icons"> keyboard_arrow_down </i>
+  </button>
+
+  <mat-menu #filterMenu="matMenu" xPosition="before">
+    <div class="content-centered" (click)="$event.stopPropagation()">
+      <mat-form-field>
+        <mat-label>{{ translate('donationList.table.header.approved') }}</mat-label>
+        <mat-select [(ngModel)]="operandInput">
+          <mat-option [value]="true">{{ translate('donationList.yes') }}</mat-option>
+          <mat-option [value]="false">{{ translate('donationList.no') }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="filter-buttons-container">
+        <button
+          class="confirm-button"
+          mat-flat-button
+          color="primary"
+          (click)="onValidation()"
+          [disabled]="isDisabled()"
+        >
+          <i class="material-icons"> search </i>
+        </button>
+      </div>
+    </div>
+  </mat-menu>
+</div>

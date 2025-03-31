@@ -1,0 +1,37 @@
+#title {
+  text-align: center;
+  font-weight: bold;
+}
+.table-header-filter {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+th:has(.table-header-filter) {
+  padding-right: 2.5rem;
+  position: relative;
+}
+
+.reset-filter-button {
+  background-color: rgba(0, 150, 136, 0.3);
+}
+
+.add-button,
+.export-button {
+  width: 197px;
+  min-width: 197px;
+}
+
+.export-button {
+  margin-left: 0.75rem;
+  background-color: rgba(0, 150, 136, 0.3);
+}
+
+.filter-export-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}

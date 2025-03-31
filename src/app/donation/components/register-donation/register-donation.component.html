@@ -1,0 +1,101 @@
+<div class="dialog-header">
+  <span *ngIf="data === null">{{ translate('donationList.addDonationButton') }}</span>
+  <span *ngIf="data !== null">{{ translate('donationList.editForm') }}</span>
+  <button mat-icon-button aria-label="Close" (click)="onDialogClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <div class="donation-register-container">
+    <form class="donation-register-form" [formGroup]="donationForm">
+      <div>
+        <mat-form-field>
+          <mat-label for="amount">{{ 'donationList.table.header.amount' | transloco }}</mat-label>
+          <input matInput id="amount" type="number" min="0" step="0.1" formControlName="amount" />
+          <mat-error *ngIf="donationForm.get('amount')!.invalid">{{
+            getErrorMessageAmount()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label for="currency">{{
+            'donationList.table.header.currency' | transloco
+          }}</mat-label>
+          <mat-select formControlName="currency">
+            <mat-option *ngFor="let currency of Object.values(ECurrency)" [value]="currency">{{
+              currency
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="donationForm.get('currency')!.invalid">{{
+            getErrorMessageCurrency()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label for="campaign">{{
+            'donationList.table.header.campaign' | transloco
+          }}</mat-label>
+          <mat-select
+            formControlName="campaign"
+            placeholder="Campaigns"
+            [compareWith]="compareCampaignObjects"
+          >
+            <mat-option *ngFor="let campaign of campaignList$ | async" [value]="campaign">{{
+              campaign.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="donationForm.get('campaign')!.invalid">{{
+            getErrorMessageCampaign()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label for="benefactor">{{
+            'donationList.table.header.benefactor' | transloco
+          }}</mat-label>
+          <mat-select
+            formControlName="benefactor"
+            placeholder="Benefactors"
+            [compareWith]="compareDonorObjects"
+          >
+            <mat-option *ngFor="let donor of donorList$ | async" [value]="donor"
+              >{{ donor.firstName }} {{ donor.additionalName ?? '' }} {{ donor.maidenName ?? '' }}
+              {{ donor.lastName }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="donationForm.get('benefactor')!.invalid">{{
+            getErrorMessageBenefactor()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="donation-notes-form">
+        <mat-form-field>
+          <mat-label for="notes">{{ 'donationList.table.header.notes' | transloco }}</mat-label>
+          <textarea matInput id="notes" formControlName="notes"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="loading-modal-footer">
+    <button
+      class="formButton"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="donationForm.invalid || (isLoading$ | async) === true"
+      (click)="onSave()"
+    >
+      {{ 'registerdonation.button.save' | transloco }}
+    </button>
+    <mat-spinner *ngIf="isLoading$ | async" diameter="32"></mat-spinner>
+  </div>
+</mat-dialog-actions>

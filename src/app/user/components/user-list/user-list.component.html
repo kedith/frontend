@@ -1,0 +1,144 @@
+<div *transloco="let translate" class="table-container">
+  <h1 id="title">{{ translate('userlist.title') }}</h1>
+
+  <div class="button-container">
+    <mat-form-field>
+      <input
+        class="search-icon"
+        matInput
+        type="text"
+        (keyup)="doFilter($event)"
+        placeholder="{{ translate('userlist.filter') }}"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onUserAddClick()">
+      <mat-icon aria-hidden="false" fontIcon="add"></mat-icon>
+      {{ translate('userlist.addUserButton') }}
+    </button>
+  </div>
+
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="Edit" sticky>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('userlist.table.header.edit') }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            (click)="onUserEditClick(element)"
+            matTooltip="{{ 'userlist.table.header.edit' | transloco }}"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="id">
+          {{ translate('userlist.table.header.id') }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="username">
+          {{ translate('userlist.table.header.username') }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="email">
+          {{ translate('userlist.table.header.email') }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Roles">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ translate('userlist.table.header.roles') }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="mat-chip-container">
+            <mat-chip *ngFor="let role of element.roles">{{ ERoleMapping[role.name] }}</mat-chip>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="FirstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="firstName">
+          {{ translate('userlist.table.header.firstName') }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="LastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="lastName">
+          {{ translate('userlist.table.header.lastName') }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="MobileNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="mobileNumber">
+          {{ translate('userlist.table.header.mobileNumber') }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.mobileNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Activated/Deactivated">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="active">
+          {{ translate('userlist.table.header.activated') }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-slide-toggle
+            [disabled]="element.username === loggedInUser"
+            checked="{{ element.active }}"
+            (change)="triggerEditActiveStatusUser(element)"
+          ></mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="
+          [
+            'Edit',
+            'ID',
+            'Username',
+            'Email',
+            'Roles',
+            'FirstName',
+            'LastName',
+            'MobileNumber',
+            'Activated/Deactivated'
+          ];
+          sticky: true
+        "
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="
+          let row;
+          columns: [
+            'Edit',
+            'ID',
+            'Username',
+            'Email',
+            'Roles',
+            'FirstName',
+            'LastName',
+            'MobileNumber',
+            'Activated/Deactivated'
+          ]
+        "
+      ></tr>
+    </table>
+    <mat-paginator
+      style="position: sticky; bottom: 0"
+      showFirstLastButtons
+      [pageSizeOptions]="[5, 10, 15]"
+    ></mat-paginator>
+  </div>
+</div>

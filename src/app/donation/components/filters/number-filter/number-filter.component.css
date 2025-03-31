@@ -1,0 +1,16 @@
+.content-centered {
+  padding: 0.5rem;
+}
+
+::ng-deep .mat-mdc-button-persistent-ripple.mdc-icon-button__ripple {
+  display: none !important;
+}
+
+.filter-buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-button {
+  width: 100%;
+}
